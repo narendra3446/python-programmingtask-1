@@ -12,20 +12,18 @@ def luhn_checksum(card_number):
     return checksum % 10 
 
 def validate_credit_card(card_number):
-    # Remove all non-digit characters from the card number
+
     card_number = re.sub(r'\D', '', card_number)
 
-    # Check if the card number is valid (must be 13-16 digits)
+    
     if not re.match(r'^\d{13,16}$', card_number):
         return False
 
-    # Check the Luhn algorithm
+    
     if luhn_checksum(card_number) != 0:
         return False
 
     return True
-
-# Test the function
 card_number = input("Enter your credit card number: ")
 if validate_credit_card(card_number):
     print( "True")
